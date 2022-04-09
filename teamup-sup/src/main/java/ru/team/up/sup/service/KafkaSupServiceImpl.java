@@ -6,24 +6,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import ru.team.up.dto.AppModuleNameDto;
+import ru.team.up.dto.SupParameterDto;
+import ru.team.up.kafka.moderator.config.ProducerSup;
 
 @Slf4j
 @Service
 public class KafkaSupServiceImpl implements KafkaSupService {
 
-    @Value(value = "${sup.kafka.system.name}")
-    private AppModuleNameDto systemName;
-    @Value(value = "${sup.kafka.topic.name}")
-    private String topic;
-    private final KafkaTemplate<AppModuleNameDto, AppModuleNameDto> kafkaTemplate;
-
-    @Autowired
-    public KafkaSupServiceImpl(KafkaTemplate<AppModuleNameDto, AppModuleNameDto> kafkaModuleNameTemplate) {
-        this.kafkaTemplate = kafkaModuleNameTemplate;
-    }
+    ProducerSup producer;
 
     @Override
     public void getAllModuleParameters() {
-        kafkaTemplate.send(topic, AppModuleNameDto.TEAMUP_SUP, systemName);
+        producer.send(AppModuleNameDto.TEAMUP_SUP, AppModuleNameDto.TEAMUP_CORE);
     }
 }

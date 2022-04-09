@@ -1,11 +1,13 @@
 package ru.team.up.core.monitoring.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import ru.team.up.dto.*;
 import ru.team.up.core.entity.*;
+import ru.team.up.kafka.moderator.config.ProducerMonitoring;
 
 import java.util.*;
 
@@ -13,15 +15,7 @@ import java.util.*;
 @Service
 public class MonitorProducerServiceImpl implements MonitorProducerService {
 
-    private KafkaTemplate kafkaTemplate;
-
-    @Value("${kafka.topic.name}")
-    private String topic;
-
-    public MonitorProducerServiceImpl(KafkaTemplate kafkaTemplate) {
-        this.kafkaTemplate = kafkaTemplate;
-    }
-
+    private ProducerMonitoring producer;
 
     @Override
     public ReportDto constructReportDto(Object principal, ControlDto control, Class cl, Map<String, Object> params) {
@@ -93,7 +87,10 @@ public class MonitorProducerServiceImpl implements MonitorProducerService {
 
     @Override
     public void send(ReportDto content) {
-        log.debug("SEND:  topic: " + topic + "  content (ReportDro): " + content);
-        kafkaTemplate.send(topic, content);
+        try {
+            producer.send(content);
+        } catch (JsonProcessingException e) {
+            log.error("Не удалось отправить сообщение: {}. Ошибка: {}", e.getMessage(), e);
+        }
     }
 }

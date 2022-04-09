@@ -15,25 +15,25 @@ import javax.annotation.PostConstruct;
 @Component
 public class KafkaParameterListener {
 
-    private final KafkaSupService kafkaSupService;
-    private final ParameterService parameterService;
-
-    @Autowired
-    public KafkaParameterListener(KafkaSupService kafkaSupService, ParameterService parameterService) {
-        this.kafkaSupService = kafkaSupService;
-        this.parameterService = parameterService;
-    }
-
-    @PostConstruct
-    public void init() {
-        kafkaSupService.getAllModuleParameters();
-    }
-
-    @KafkaListener(topics = "${sup.kafka.topic.name}", containerFactory = "listDtoKafkaContainerFactory")
-    public void listener(ListSupParameterDto listParameterDto) {
-        for (SupParameterDto<?> parameterDto : listParameterDto.getList()) {
-            log.debug("Получен параметр {}", parameterDto.getParameterName());
-            parameterService.addParam(parameterDto);
-        }
-    }
+//    private final KafkaSupService kafkaSupService;
+//    private final ParameterService parameterService;
+//
+//    @Autowired
+//    public KafkaParameterListener(KafkaSupService kafkaSupService, ParameterService parameterService) {
+//        this.kafkaSupService = kafkaSupService;
+//        this.parameterService = parameterService;
+//    }
+//
+//    @PostConstruct
+//    public void init() {
+//        kafkaSupService.getAllModuleParameters();
+//    }
+//
+//    @KafkaListener(topics = "34wx3onr-sup")
+//    public void listener(ListSupParameterDto listParameterDto) {
+//        for (SupParameterDto<?> parameterDto : listParameterDto.getList()) {
+//            log.debug("Получен параметр {}", parameterDto.getParameterName());
+//            parameterService.addParam(parameterDto);
+//        }
+//    }
 }
