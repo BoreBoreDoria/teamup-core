@@ -17,7 +17,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
         "classpath:auth.properties",
         "classpath:sup.properties",
         "classpath:monitoring.properties",
-        "classpath:email-service.properties"
 })
 @EnableWebMvc
 public class TeamupAppApplication {

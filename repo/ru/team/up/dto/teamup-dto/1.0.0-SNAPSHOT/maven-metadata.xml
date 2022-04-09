@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>ru.team.up.dto</groupId>
+  <artifactId>teamup-dto</artifactId>
+  <versioning>
+    <lastUpdated>20220409080854</lastUpdated>
+    <snapshot>
+      <timestamp>20220409.080854</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1.0.0-20220409.080854-1</value>
+        <updated>20220409080854</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0.0-20220409.080854-1</value>
+        <updated>20220409080854</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+  <version>1.0.0-SNAPSHOT</version>
+</metadata>
