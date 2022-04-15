@@ -55,7 +55,7 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ru.team.up.dto</groupId>
+                <groupId>ru.team.up</groupId>
                 <artifactId>teamup-dto</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -144,7 +144,7 @@
             <type>pom</type>
         </dependency>
         <dependency>
-            <groupId>ru.team.up.dto</groupId>
+            <groupId>ru.team.up</groupId>
             <artifactId>teamup-dto</artifactId>
             <version>${project.version}</version>
         </dependency>

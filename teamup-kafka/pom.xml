@@ -42,7 +42,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ru.team.up.dto</groupId>
+            <groupId>ru.team.up</groupId>
             <artifactId>teamup-dto</artifactId>
         </dependency>
         <dependency>
